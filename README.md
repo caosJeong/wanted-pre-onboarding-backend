@@ -22,4 +22,15 @@
 1. 이 레포지토리를 클론합니다:
 
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   https://github.com/caosJeong/wanted-pre-onboarding-backend.git
+2. 가상 환경을 생성하고 종속성을 설치합니다
+   ```bash
+   cd your-repo
+   python -m venv venv
+   source venv/bin/activate  # 또는 Windows의 경우 venv\Scripts\activate
+   pip install -r requirements.txt
+
+3. 서버를 시작합니다.
+   ```bash
+   python manage.py runserver
+4. 스웨거를 통해 해당 api 스펙을 확인 할 수 있습니다.
