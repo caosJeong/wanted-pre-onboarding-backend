@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from drf_spectacular.utils import extend_schema
+from rest_framework import viewsets
 
-# Create your views here.
+from companies.models import Company
+from companies.serializers import CompanySerializer
+
+
+@extend_schema(request=CompanySerializer, responses=CompanySerializer)
+class CompanyViewSet(viewsets.ModelViewSet):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer

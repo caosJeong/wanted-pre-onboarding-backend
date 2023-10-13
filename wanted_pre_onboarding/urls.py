@@ -18,14 +18,17 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
-from oauth2_provider.views import ProtectedResourceView
 from rest_framework.routers import DefaultRouter
 
+from accounts.views import UserViewSet
+from companies.views import CompanyViewSet
 from jobs.views import JobPostingViewSet, ApplicationViewSet
 
 router = DefaultRouter()
-router.register(r'jobpostings', JobPostingViewSet)
+router.register(r'job_postings', JobPostingViewSet)
 router.register(r'applications', ApplicationViewSet)
+router.register(r'companies', CompanyViewSet)
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
