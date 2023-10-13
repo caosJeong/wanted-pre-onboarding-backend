@@ -17,4 +17,4 @@ class JobPosting(models.Model):
 
 class Application(models.Model):
     job_posting = models.ForeignKey(JobPosting, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(CustomUser, on_delete)
+    customer = models.ForeignKey(CustomUser, on_delete=models.DO_NOTHING)

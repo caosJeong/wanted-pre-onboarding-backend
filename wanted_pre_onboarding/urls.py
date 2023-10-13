@@ -14,8 +14,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from oauth2_provider.views import ProtectedResourceView
 from rest_framework.routers import DefaultRouter
 
@@ -28,5 +30,7 @@ router.register(r'applications', ApplicationViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
-    path('api/hello/', ProtectedResourceView.as_view(), name='hello'),
+    path(f'api/{settings.API_VERSION}/', include(router.urls)),
+    path('schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ]
