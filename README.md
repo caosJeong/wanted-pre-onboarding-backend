@@ -20,7 +20,6 @@
 ## 설치 및 실행
 
 1. 이 레포지토리를 클론합니다:
-
    ```bash
    https://github.com/caosJeong/wanted-pre-onboarding-backend.git
 2. 가상 환경을 생성하고 종속성을 설치합니다
@@ -34,3 +33,7 @@
    ```bash
    python manage.py runserver
 4. 스웨거를 통해 해당 api 스펙을 확인 할 수 있습니다.
+   - NestedViewSetMixin의 설정이 꼬였는지... 스웨거에서 오류가 발생합니다. 😭
+   - wanted_pre_onboarding.url에서 urlpatterns path(f'api/{settings.API_VERSION}/', include(jop_posting_router.urls)) 를 주석 처리 하면 스웨거 화면을 확인 할 수 있습니다.
+
+
