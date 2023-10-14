@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
+API_VERSION = 'v1'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,13 +42,16 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'companies',
     'jobs',
-    'accounts'
+    'accounts',
+    'drf_spectacular',
+
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 OAUTH2_PROVIDER = {
@@ -142,3 +146,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': '프리온보딩 백엔드 인턴십 과제',
+    'DESCRIPTION': '프리온보딩',
+    'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'SERVE_URLCONF': ['wanted_pre_onboarding.urls']
+}
